@@ -11,7 +11,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #cecece;
 }
 
 @theme inline {
@@ -23,7 +23,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #cecece;
     --foreground: #ededed;
   }
 }
@@ -32,4 +32,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'LeagueGothic', sans-serif;
+  overflow-x: hidden;
+  letter-spacing: 3px;
+}
+.container {
+width: 80% ;
+margin: 0 auto;
+
 }
