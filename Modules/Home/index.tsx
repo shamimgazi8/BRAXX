@@ -59,6 +59,9 @@ export default function HomePage() {
           <Viewer360 images={frames} height={700}  /> 
         </div>
       </section>
+      <section  className='h-screen bg-[#cecece] text-4xl font-league text-white flex flex-col items-center justify-center'>
+        hello world
+      </section>
 
 
     </main>
