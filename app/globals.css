@@ -21,6 +21,9 @@
 .font-gro{
   font-family: "Px Grotesk Regular";
 }
+.font-Leag{
+   font-family: 'LeagueGothic', sans-serif;
+}
 :root {
   --background: #ffffff;
   --foreground: #cecece;
