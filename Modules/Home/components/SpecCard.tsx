@@ -75,7 +75,7 @@ const BikePrice = () => (
 const BikeHero = () => {
   return (
 <div
-  className="ml-3 w-[calc(100vw-52px)] flex flex-col text-white md:ml-[10vw] md:w-[90vw] md:pr-5 select-none pointer-events-none"
+  className="ml-3 w-[calc(100vw-52px)] flex flex-col justify-center text-white md:ml-[10vw] md:w-[90vw] md:pr-5 select-none pointer-events-none"
 >
       <div className="relative  mt-[12vh] flex justify-between md:mt-0">
         <BikeTitle />

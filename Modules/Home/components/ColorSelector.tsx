@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const colors = [
+  { label: "Chrome", value: "#393939" },
   { label: "Black", value: "#000000" },
-  { label: "White", value: "#ffffff" },
   { label: "Red", value: "#ff0000" },
-  { label: "Blue", value: "#0000ff" },
   { label: "Silver", value: "#c0c0c0" },
 ];
 

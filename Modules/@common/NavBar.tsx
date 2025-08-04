@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +19,7 @@ export default function NavBar() {
     <nav
       className={cn(
         'fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out',
-        scrolled ? 'bg-black/30 ' : 'bg-transparent'
+        scrolled ? 'bg-black/30 backdrop-blur-md' : 'bg-transparent'
       )}
     >
       <div
@@ -34,14 +35,33 @@ export default function NavBar() {
 
         {/* Links */}
         <div className="space-x-6 hidden md:flex">
-          <Link href="/about" className="text-white text-[19px] hover:text-gray-300 text-2xl transition tracking-wider">
-            About
-          </Link>
-          <Link href="/contact" className="text-white text-[19px] hover:text-gray-300 transition tracking-wider font-normal">
-            Contact
-          </Link>
+          <NavLink href="/about">About</NavLink>
+          <NavLink href="/contact">Contact</NavLink>
         </div>
       </div>
     </nav>
   );
 }
+
+// NavLink component to encapsulate the Framer Motion logic
+const NavLink = ({ href, children }:any) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <Link
+      href={href}
+      className="relative text-white text-[22px] font-normal tracking-wider transition-colors duration-300"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {children}
+      <motion.span
+        className="absolute left-0 bottom-0 block h-[2px] w-full bg-white"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        style={{ originX: 0 }}
+      />
+    </Link>
+  );
+};

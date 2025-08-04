@@ -9,21 +9,21 @@ export default function Footer() {
         
         {/* Logo */}
         <div className="flex flex-col gap-2">
-          <h2 className="text-2xl font-bold tracking-wider">BRAXX</h2>
+          <h2 className="text-2xl tracking-wider">BRAXX</h2>
           <p className="text-sm text-gray-400">Electric Performance Redefined</p>
         </div>
 
         {/* Navigation Links */}
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex flex-col gap-1">
-            <h4 className="font-semibold mb-2 text-gray-300">Explore</h4>
+            <h4 className=" text-[18px] mb-2 text-gray-300">Explore</h4>
             <Link href="/models" className="hover:text-white text-gray-400 text-sm">Models</Link>
             <Link href="/360" className="hover:text-white text-gray-400 text-sm">360 Viewer</Link>
             <Link href="/about" className="hover:text-white text-gray-400 text-sm">About</Link>
           </div>
 
           <div className="flex flex-col gap-1">
-            <h4 className="font-semibold mb-2 text-gray-300">Company</h4>
+            <h4 className=" text-[18px] mb-2 text-gray-300">Company</h4>
             <Link href="/contact" className="hover:text-white text-gray-400 text-sm">Contact</Link>
             <Link href="/dealer" className="hover:text-white text-gray-400 text-sm">Become a Dealer</Link>
             <Link href="/support" className="hover:text-white text-gray-400 text-sm">Support</Link>
@@ -32,7 +32,7 @@ export default function Footer() {
 
         {/* Social */}
         <div className="flex flex-col gap-2">
-          <h4 className="font-semibold mb-2 text-gray-300">Follow Us</h4>
+          <h4 className=" text-[18px] mb-2 text-gray-300">Follow Us</h4>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white text-gray-400">Instagram</a>
             <a href="#" className="hover:text-white text-gray-400">YouTube</a>

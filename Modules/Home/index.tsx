@@ -4,9 +4,10 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import dynamic from 'next/dynamic'
-import MotorcycleSpecCard from './components/SpecCard'
 import BikeHero from './components/SpecCard'
-import ColorSelector from './components/ColorSelector'
+import PurchaseButton from '../@common/PurchaseButton'
+import ParallaxHero from '../@common/Parallax/ParallaxFx'
+
 
 // Dynamically import 360 viewer if you have one (placeholder for now)
 const Viewer360 = dynamic(() => import('@/Modules/Home/components/Viewer360'), { ssr: false })
@@ -52,25 +53,20 @@ export default function HomePage() {
   }, [])
 
   return (
-    <main className="relative mt-[100px]">
-
-
+    <main className="relative ">
       {/* 360 Viewer Section (Placeholder) */}
       <section className="h-screen bg-[#cecece]  text-white grid grid-cols-[100px_1fr]">
-        
       <BikeHero />
-    
-        <div className=" w-full">
-          <Viewer360 images={frames} height={700}  /> 
-        </div>
-
+      <div className=" w-full flex items-center">
+        <Viewer360 images={frames} height={700}  /> 
+      </div>
       </section>
-      <section  className='h-screen bg-[#cecece] text-4xl font-league text-white flex flex-col items-center justify-center'>
-        hello world
-        <ColorSelector />
-      </section>
-
-
+      <PurchaseButton />
+ 
+        <ParallaxHero />
+      <section className="h-screen bg-white flex items-center justify-center">
+  <p className="text-black text-3xl">Next Section</p>
+</section>
     </main>
   )
 }
