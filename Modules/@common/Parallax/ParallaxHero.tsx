@@ -3,7 +3,17 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 
-export default function ParallaxHero() {
+interface ParallaxHeroProps {
+  imageSrc: string;
+  videoSrc?: string; // optional
+  cursorEnabled?: boolean; // default true, disables custom cursor if false or no videoSrc
+}
+
+export default function ParallaxHero({
+  imageSrc,
+  videoSrc,
+  cursorEnabled = true,
+}: ParallaxHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -15,10 +25,13 @@ export default function ParallaxHero() {
     offset: ['start start', 'end start'],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
-  const translateY = useTransform(scrollYProgress, [0, 0.5], ['40%', '0%']);
+
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
+  const translateY = useTransform(scrollYProgress, [0, 0.5], ['30%', '0%']);
 
   const handleClick = () => {
+    if (!videoSrc) return; 
+
     if (!showVideo) {
       setShowVideo(true);
       setTimeout(() => {
@@ -42,6 +55,8 @@ export default function ParallaxHero() {
   };
 
   useEffect(() => {
+    if (!videoSrc) return;
+
     const video = videoRef.current;
     if (!video) return;
 
@@ -55,10 +70,24 @@ export default function ParallaxHero() {
       video.removeEventListener('play', handlePlay);
       video.removeEventListener('pause', handlePause);
     };
-  }, []);
+  }, [videoSrc]);
+
+  
+  const cursorStyle =
+    videoSrc && cursorEnabled
+      ? {
+          cursor: isVideoPlaying
+            ? 'url("/cursor-2.png") 8 8, grab'
+            : 'url("/cursor-1.png") 8 8, grab',
+        }
+      : { cursor: 'auto' };
 
   return (
-    <div ref={containerRef} className="relative h-[250vh]">
+    <div
+      ref={containerRef}
+      className="relative h-[220vh] m-0 p-0"
+      style={{ margin: 0, padding: 0 }}
+    >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <motion.div
           className="absolute inset-0 w-full h-full"
@@ -68,44 +97,62 @@ export default function ParallaxHero() {
           <div
             className="absolute inset-0 z-20"
             onClick={handleClick}
-            style={{
-              cursor: isVideoPlaying
-                ? 'url("/cursor-2.png") 8 8, grab'
-                : 'url("/cursor-1.png") 8 8, grab',
-            }}
+            style={cursorStyle}
           >
             <AnimatePresence mode="wait">
               {!showVideo && (
                 <motion.img
                   key="image"
-                  src="https://images.prismic.io/zero-cms-disco/ZxpNmIF3NbkBX-mo_4_SectionBuffer_DWM_ZERO_MY25_FXE_FINALS_V1_HI_0001_0005.jpg?auto=format,compress"
+                  src={imageSrc}
                   alt="Hero"
                   className="w-full h-full object-cover"
-                  initial={{ opacity: 0, scaleX: 0, scaleY: 0, transformOrigin: '50% 50%' }}
+                  initial={{
+                    opacity: 0,
+                    scaleX: 0,
+                    scaleY: 0,
+                    transformOrigin: '50% 50%',
+                  }}
                   animate={{ opacity: 1, scaleX: 1, scaleY: 1 }}
-                  exit={{ opacity: 0, scaleX: 0, scaleY: 0 }}
+                  exit={{
+                    opacity: 0,
+                    scaleX: 0,
+                    scaleY: 0,
+                    transformOrigin: '50% 50%',
+                  }}
                   transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                 />
               )}
             </AnimatePresence>
 
-            <AnimatePresence mode="wait">
-              {showVideo && (
-                <motion.video
-                  key="video"
-                  ref={videoRef}
-                  src="https://www.w3schools.com/html/mov_bbb.mp4"
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                  initial={{ opacity: 0, scaleX: 0, scaleY: 0, transformOrigin: '50% 50%' }}
-                  animate={{ opacity: 1, scaleX: 1, scaleY: 1 }}
-                  exit={{ opacity: 0, scaleX: 0, scaleY: 0 }}
-                  transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                />
-              )}
-            </AnimatePresence>
+            {videoSrc && (
+              <AnimatePresence mode="wait">
+                {showVideo && (
+                  <motion.video
+                    key="video"
+                    ref={videoRef}
+                    src={videoSrc}
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                    initial={{
+                      opacity: 0,
+                      scaleX: 0,
+                      scaleY: 0,
+                      transformOrigin: '50% 50%',
+                    }}
+                    animate={{ opacity: 1, scaleX: 1, scaleY: 1 }}
+                    exit={{
+                      opacity: 0,
+                      scaleX: 0,
+                      scaleY: 0,
+                      transformOrigin: '50% 50%',
+                    }}
+                    transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                  />
+                )}
+              </AnimatePresence>
+            )}
           </div>
         </motion.div>
 
