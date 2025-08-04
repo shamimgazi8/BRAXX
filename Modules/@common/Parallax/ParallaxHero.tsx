@@ -1,7 +1,12 @@
-'use client';
+"use client";
 
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 interface ParallaxHeroProps {
   imageSrc: string;
@@ -22,15 +27,14 @@ export default function ParallaxHero({
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end start'],
+    offset: ["start start", "end start"],
   });
 
-
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
-  const translateY = useTransform(scrollYProgress, [0, 0.5], ['30%', '0%']);
+  const translateY = useTransform(scrollYProgress, [0, 0.5], ["30%", "0%"]);
 
   const handleClick = () => {
-    if (!videoSrc) return; 
+    if (!videoSrc) return;
 
     if (!showVideo) {
       setShowVideo(true);
@@ -63,16 +67,15 @@ export default function ParallaxHero({
     const handlePlay = () => setIsVideoPlaying(true);
     const handlePause = () => setIsVideoPlaying(false);
 
-    video.addEventListener('play', handlePlay);
-    video.addEventListener('pause', handlePause);
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
 
     return () => {
-      video.removeEventListener('play', handlePlay);
-      video.removeEventListener('pause', handlePause);
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
     };
   }, [videoSrc]);
 
-  
   const cursorStyle =
     videoSrc && cursorEnabled
       ? {
@@ -80,7 +83,7 @@ export default function ParallaxHero({
             ? 'url("/cursor-2.png") 8 8, grab'
             : 'url("/cursor-1.png") 8 8, grab',
         }
-      : { cursor: 'auto' };
+      : { cursor: "auto" };
 
   return (
     <div
@@ -110,14 +113,14 @@ export default function ParallaxHero({
                     opacity: 0,
                     scaleX: 0,
                     scaleY: 0,
-                    transformOrigin: '50% 50%',
+                    transformOrigin: "50% 50%",
                   }}
                   animate={{ opacity: 1, scaleX: 1, scaleY: 1 }}
                   exit={{
                     opacity: 0,
                     scaleX: 0,
                     scaleY: 0,
-                    transformOrigin: '50% 50%',
+                    transformOrigin: "50% 50%",
                   }}
                   transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                 />
@@ -139,14 +142,14 @@ export default function ParallaxHero({
                       opacity: 0,
                       scaleX: 0,
                       scaleY: 0,
-                      transformOrigin: '50% 50%',
+                      transformOrigin: "50% 50%",
                     }}
                     animate={{ opacity: 1, scaleX: 1, scaleY: 1 }}
                     exit={{
                       opacity: 0,
                       scaleX: 0,
                       scaleY: 0,
-                      transformOrigin: '50% 50%',
+                      transformOrigin: "50% 50%",
                     }}
                     transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                   />

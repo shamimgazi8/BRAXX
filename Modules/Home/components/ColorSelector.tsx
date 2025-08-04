@@ -12,7 +12,7 @@ const ColorSelector = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [expanded, setExpanded] = useState(false);
 
-  const handleSelect = (color: typeof colors[0]) => {
+  const handleSelect = (color: (typeof colors)[0]) => {
     setSelectedColor(color);
     setExpanded(false);
   };

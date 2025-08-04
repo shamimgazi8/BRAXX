@@ -51,7 +51,12 @@ body {
 
 }
 .container {
-width: 80% ;
-margin: 0 auto;
+    
+            max-width: 1550px; /* Max width of 1200px on large screens */
+            height: auto; /* Height adjusts to content */
+            margin: auto;
+   
+
+
 
 }

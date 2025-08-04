@@ -1,5 +1,5 @@
-import React from 'react';
-import ColorSelector from './ColorSelector';
+import React from "react";
+import ColorSelector from "./ColorSelector";
 
 const ModelYearSwitcher = () => (
   <div className="flex flex-col text-white items-end translate-x-[-30px]">
@@ -32,8 +32,6 @@ const BikeTitle = () => (
   </div>
 );
 
-
-
 const BikeSpecs = () => (
   <div className="flex flex-col gap-2 mb-3">
     <div className="flex items-start justify-between">
@@ -41,10 +39,10 @@ const BikeSpecs = () => (
         <p className=" mb-[4px] text-white opacity-50">Speed</p>
         <span className="heading--6 text-white">85 MPH</span>
       </div>
-    {/* <div>color selector</div> */}
-   <div className="pointer-events-auto">
-    <ColorSelector />
-  </div>
+      {/* <div>color selector</div> */}
+      <div className="pointer-events-auto">
+        <ColorSelector />
+      </div>
     </div>
     <div className="bike-hero-stagger">
       <p className=" mb-[4px] text-white opacity-50">Range</p>
@@ -74,9 +72,7 @@ const BikePrice = () => (
 
 const BikeHero = () => {
   return (
-<div
-  className="ml-3 w-[calc(100vw-52px)] flex flex-col justify-center text-white md:ml-[10vw] md:w-[90vw] md:pr-5 select-none pointer-events-none"
->
+    <div className="ml-3 w-[calc(100vw-52px)] flex flex-col justify-center text-white md:ml-[10vw] md:w-[90vw] md:pr-5 select-none pointer-events-none">
       <div className="relative  mt-[12vh] flex justify-between md:mt-0">
         <BikeTitle />
         <div className="z-50 md:hidden">

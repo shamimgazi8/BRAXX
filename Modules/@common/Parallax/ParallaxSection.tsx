@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import clsx from 'clsx';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import clsx from "clsx";
 
 interface ParallaxSectionProps {
   title: string;
@@ -26,14 +26,18 @@ export default function ParallaxFXESection({
     <div className="relative w-full font-gro">
       {/* Title overlay (only on large screens, centered across full section) */}
       <div className="pointer-events-none absolute top-[50vh] left-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
-       <h2 className="whitespace-nowrap text-white text-[6vw] lg:text-[160px] leading-none text-center font-Leag">
-  {title}
-</h2>
-
+        <h2 className="whitespace-nowrap text-white text-[6vw] lg:text-[160px] leading-none text-center font-Leag">
+          {title}
+        </h2>
       </div>
 
       {/* Content layout */}
-      <div className={clsx('flex flex-col lg:flex-row', reverse && 'lg:flex-row-reverse')}>
+      <div
+        className={clsx(
+          "flex flex-col lg:flex-row",
+          reverse && "lg:flex-row-reverse"
+        )}
+      >
         {/* Sticky image section */}
         <div className="relative h-[350px] min-h-[350px] w-full flex-1 brightness-[75%] lg:sticky lg:top-0 lg:h-screen lg:brightness-100">
           <Image
@@ -68,7 +72,9 @@ export default function ParallaxFXESection({
             <ul className="mt-8 hidden flex-col gap-8 lg:flex">
               {features.map((feat, idx) => (
                 <li key={idx} className="flex gap-4">
-                  <h5 className="w-[250px] min-w-[250px] text-white text-[16px]">{feat.heading}</h5>
+                  <h5 className="w-[250px] min-w-[250px] text-white text-[16px]">
+                    {feat.heading}
+                  </h5>
                   <div className="w-full text-gray-400">
                     <p>{feat.content}</p>
                   </div>
@@ -89,8 +95,8 @@ export default function ParallaxFXESection({
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 10 10"
                       className={clsx(
-                        'h-2 w-2 fill-white transition-transform',
-                        expanded === idx ? 'rotate-180' : 'rotate-0'
+                        "h-2 w-2 fill-white transition-transform",
+                        expanded === idx ? "rotate-180" : "rotate-0"
                       )}
                     >
                       <path d="M10 3.57 5.31 7.882A.46.46 0 0 1 5 8a.46.46 0 0 1-.31-.118L0 3.57.62 3 5 7.028 9.38 3z" />
@@ -98,7 +104,7 @@ export default function ParallaxFXESection({
                   </button>
                   <motion.div
                     initial={{ height: 0 }}
-                    animate={{ height: expanded === idx ? 'auto' : 0 }}
+                    animate={{ height: expanded === idx ? "auto" : 0 }}
                     className="overflow-hidden text-gray-400"
                   >
                     <div className="pb-4">

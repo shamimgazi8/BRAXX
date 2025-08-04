@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/Modules/@common/NavBar";
-import Footer from "@/Modules/@common/Footer";
+import FooterWrapper from "@/lib/FooterWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,14 +16,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "BRAXX",
-  description: "All-electricc. Road-ready. Adventure-proven. Choose betweeen the O3 and the O3 pro to match your speed",
+  description:
+    "All-electricc. Road-ready. Adventure-proven. Choose betweeen the O3 and the O3 pro to match your speed",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
@@ -31,7 +32,7 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
-        <Footer />
+        <FooterWrapper />
       </body>
     </html>
   );
