@@ -4,6 +4,7 @@ import BikeHero from './components/SpecCard'
 import PurchaseButton from '../@common/PurchaseButton'
 import ParallaxHero from '../@common/Parallax/ParallaxHero'
 import ParallaxFXESection from '../@common/Parallax/ParallaxSection'
+import BikePerformanceSlider from '../@common/BikeSlider'
 
 
 // Dynamically import 360 viewer if you have one (placeholder for now)
@@ -27,8 +28,8 @@ export default function HomePage() {
       <PurchaseButton />
  
         <ParallaxHero
-  imageSrc="/placeholder.avif"
-  videoSrc="https://your-video-link.mp4"  // optional, omit to disable video
+  imageSrc="/placeholder/placeholder-1.png"
+  videoSrc="/placeholder/placeholder-video.mp4"  // optional, omit to disable video
   cursorEnabled={true} // optional, default true; set false to disable custom cursor
 />
         <div className="w-full bg-[#1e1e21]">
@@ -61,6 +62,7 @@ export default function HomePage() {
   imageSrc="/placeholder.avif"
 
 />
+<BikePerformanceSlider />
     </div>
 
     </main>
