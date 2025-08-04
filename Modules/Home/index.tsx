@@ -1,7 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
 import BikeHero from "./components/SpecCard";
-import PurchaseButton from "../@common/PurchaseButton";
 import ParallaxHero from "../@common/Parallax/ParallaxHero";
 import ParallaxFXESection from "../@common/Parallax/ParallaxSection";
 import BikePerformanceSlider from "../@common/BikePerformenceSlider";
@@ -28,7 +27,6 @@ export default function HomePage() {
           <Viewer360 images={frames} height={700} />
         </div>
       </section>
-      {/* <PurchaseButton /> */}
 
       <ParallaxHero
         imageSrc="/placeholder/placeholder-10.png"

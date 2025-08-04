@@ -1,8 +1,8 @@
-'use client';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+"use client";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -11,21 +11,21 @@ export default function NavBar() {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out',
-        scrolled ? 'bg-black/30 backdrop-blur-md' : 'bg-transparent'
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out",
+        scrolled ? "bg-black/30 backdrop-blur-md" : "bg-transparent"
       )}
     >
       <div
         className={cn(
-          'max-w-7xl mx-auto px-6 flex justify-between items-center transition-all duration-300 ease-in-out',
-          scrolled ? 'py-[18px]' : 'py-[28px]'
+          " px-6 flex justify-between items-center transition-all duration-300 ease-in-out mx-5",
+          scrolled ? "py-[18px]" : "py-[28px]"
         )}
       >
         {/* Logo */}
@@ -44,7 +44,7 @@ export default function NavBar() {
 }
 
 // NavLink component to encapsulate the Framer Motion logic
-const NavLink = ({ href, children }:any) => {
+const NavLink = ({ href, children }: any) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

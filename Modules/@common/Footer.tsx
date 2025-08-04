@@ -54,7 +54,7 @@ const Footer = ({ observerRef }: FooterProps) => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-3xl font-bold">BRAXX</span>
+              <span className="text-3xl font-bold ml-5">BRAXX</span>
             </Link>
           </div>
 
