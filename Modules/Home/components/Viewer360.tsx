@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface Viewer360Props {
   images: string[];
@@ -14,19 +14,41 @@ export default function Viewer360({
   height = "400px",
 }: Viewer360Props) {
   const [currentFrame, setCurrentFrame] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const lastX = useRef<number | null>(null);
   const deltaAccum = useRef(0);
   const frameCount = images.length;
-  const sensitivity = 5; // pixels per frame
+  const sensitivity = 5;
+
+  // Preload all images
+  useEffect(() => {
+    let loaded = 0;
+    const preloadedImages: HTMLImageElement[] = [];
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loaded++;
+        if (loaded === images.length) {
+          setIsLoaded(true);
+        }
+      };
+      preloadedImages.push(img);
+    });
+
+    // Reset frame index on color change
+    setCurrentFrame(0);
+  }, [images]);
 
   const updateFrame = (deltaX: number) => {
     deltaAccum.current += deltaX;
 
     if (Math.abs(deltaAccum.current) >= sensitivity) {
       const frameChange = Math.floor(deltaAccum.current / sensitivity);
-      deltaAccum.current -= frameChange * sensitivity; // reset accumulated delta
+      deltaAccum.current -= frameChange * sensitivity;
 
       setCurrentFrame((prev) => {
         let next = (prev + frameChange) % frameCount;
@@ -72,10 +94,6 @@ export default function Viewer360({
     deltaAccum.current = 0;
   };
 
-  useEffect(() => {
-    setCurrentFrame(0);
-  }, [images]);
-
   return (
     <div
       ref={containerRef}
@@ -94,17 +112,23 @@ export default function Viewer360({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <img
-        src={images[currentFrame]}
-        alt={`360 frame ${currentFrame + 1}`}
-        draggable={false}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "contain",
-          pointerEvents: "none",
-        }}
-      />
+      {isLoaded ? (
+        <img
+          src={images[currentFrame]}
+          alt={`360 frame ${currentFrame + 1}`}
+          draggable={false}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            pointerEvents: "none",
+          }}
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center text-white">
+          Loading...
+        </div>
+      )}
     </div>
   );
 }

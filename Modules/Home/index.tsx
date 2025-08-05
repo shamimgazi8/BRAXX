@@ -18,14 +18,22 @@ export default function HomePage() {
   // Use selectedColor.label to generate the folder name in lowercase
   const folderName = selectedColor.label.toLowerCase();
 
+  // const frames = Array.from(
+  //   { length: 96 },
+  //   (_, i) =>
+  //     `/images/360frames/${folderName}-optimized/frame-${String(i + 1).padStart(
+  //       3,
+  //       "0"
+  //     )}.webp`
+  // );
   const frames = Array.from(
     { length: 96 },
     (_, i) =>
-      `/images/360frames/${folderName}-optimized/frame-${String(i + 1).padStart(
-        3,
-        "0"
-      )}.webp`
+      `https://cdn.jsdelivr.net/gh/shamimgazi8/BRAXX/public/images/360frames/${folderName}-optimized/frame-${String(
+        i + 1
+      ).padStart(3, "0")}.webp`
   );
+
   return (
     <main className="relative">
       {/* 360 Viewer Section */}
