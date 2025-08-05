@@ -1,15 +1,18 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useColorStore } from "@/store/useColorStore";
 
 const colors = [
   { label: "Chrome", value: "#393939" },
   { label: "Black", value: "#000000" },
   { label: "Red", value: "#ff0000" },
-  { label: "Silver", value: "#c0c0c0" },
+  { label: "ChromeBlack", value: "#1B2A34" },
 ];
 
 const ColorSelector = () => {
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const { selectedColor, setSelectedColor } = useColorStore();
   const [expanded, setExpanded] = useState(false);
 
   const handleSelect = (color: (typeof colors)[0]) => {
@@ -18,10 +21,9 @@ const ColorSelector = () => {
   };
 
   return (
-    <div className="flex  items-center justify-center gap-4 text-white translate-x-[-30px]">
+    <div className="flex items-center justify-center gap-4 text-white translate-x-[-30px]">
       <p className="text-[18px] opacity-60"> {selectedColor.label}</p>
 
-      {/* If collapsed, show only selected color dot */}
       {!expanded && (
         <button
           aria-label={`Selected color is ${selectedColor.label}, click to change`}
@@ -32,7 +34,6 @@ const ColorSelector = () => {
         />
       )}
 
-      {/* If expanded, show all colors */}
       <AnimatePresence>
         {expanded && (
           <motion.fieldset

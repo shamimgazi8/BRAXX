@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MoveRight, X } from "lucide-react";
 import Image from "next/image";
 import ColorSelector from "./ColorSelector";
+import { useColorStore } from "@/store/useColorStore";
 
 const circleVariants = {
   hidden: { scale: 0, opacity: 0 },
@@ -21,6 +22,11 @@ const circleVariants = {
 const PurchaseButton = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const { selectedColor } = useColorStore();
+
+  const folderName = useMemo(() => {
+    return `.${selectedColor.label.toUpperCase()} 360`;
+  }, [selectedColor.label]);
 
   return (
     <>
@@ -36,7 +42,7 @@ const PurchaseButton = () => {
         transition={{ duration: 0.5, delay: 1 }}
       >
         <Image
-          src={"/images/360frames/.CHROME 360/0001.png"}
+          src={`/images/360frames/${folderName}/0001.png`}
           alt="img"
           height={60}
           width={120}
@@ -115,9 +121,9 @@ const PurchaseButton = () => {
 
                   {/* Bike Image */}
                   <img
-                    src="/images/360frames/.CHROME 360/0001.png"
-                    alt="A cool mountain bike"
-                    className="relative w-full max-w-[280px] h-auto rounded-xl z-10"
+                    src={`/images/360frames/${folderName}/0001.png`}
+                    alt={`Bike in ${selectedColor.label} color`}
+                    className="relative w-full max-w-[360px] h-auto rounded-xl z-10"
                   />
                 </div>
 

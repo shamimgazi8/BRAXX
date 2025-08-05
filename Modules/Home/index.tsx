@@ -5,6 +5,8 @@ import ParallaxHero from "../@common/Parallax/ParallaxHero";
 import ParallaxFXESection from "../@common/Parallax/ParallaxSection";
 import BikePerformanceSlider from "./components/BikePerformenceSlider";
 import TechSpecsComponent from "./components/TechSpecsComponent";
+import { useColorStore } from "@/store/useColorStore";
+import { useMemo } from "react";
 
 // Dynamically import 360 viewer
 const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
@@ -12,12 +14,21 @@ const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
 });
 
 export default function HomePage() {
-  const frames = Array.from(
-    { length: 96 },
-    (_, i) =>
-      `/images/360frames/.CHROME 360/${String(i + 1).padStart(4, "0")}.png`
-  );
+  const { selectedColor } = useColorStore();
 
+  // Convert color label to match folder format (e.g., "Chrome" → ".CHROME 360")
+  const folderName = useMemo(() => {
+    return `.${selectedColor.label.toUpperCase()} 360`;
+  }, [selectedColor.label]);
+
+  // Generate frame URLs
+  const frames = useMemo(() => {
+    return Array.from(
+      { length: 96 },
+      (_, i) =>
+        `/images/360frames/${folderName}/${String(i + 1).padStart(4, "0")}.png`
+    );
+  }, [folderName]);
   return (
     <main className="relative ">
       {/* 360 Viewer Section  */}
