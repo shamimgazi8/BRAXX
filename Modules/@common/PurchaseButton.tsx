@@ -39,7 +39,7 @@ const PurchaseButton = () => {
         aria-label="Open purchase sidebar"
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
+        transition={{ duration: 0.3 }}
       >
         <Image
           src={`/images/360frames/${folderName}/0001.png`}

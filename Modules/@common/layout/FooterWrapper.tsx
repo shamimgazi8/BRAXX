@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import PurchaseButton from "@/Modules/@common/PurchaseButton";
 import Footer from "@/Modules/@common/layout/Footer";
 import { useEffect } from "react";
+import ScrollToTopButton from "../ScrollToTop";
 
 export default function FooterWrapper() {
   const { ref, inView } = useInView({
@@ -25,6 +26,7 @@ export default function FooterWrapper() {
             exit={{ opacity: 0 }}
             className="fixed bottom-6 right-6 z-50"
           >
+            <ScrollToTopButton />
             <PurchaseButton />
           </motion.div>
         )}
