@@ -6,7 +6,6 @@ import ParallaxFXESection from "../@common/Parallax/ParallaxSection";
 import BikePerformanceSlider from "./components/BikePerformenceSlider";
 import TechSpecsComponent from "./components/TechSpecsComponent";
 import { useColorStore } from "@/store/useColorStore";
-import { useMemo } from "react";
 
 // Dynamically import 360 viewer
 const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
@@ -14,27 +13,25 @@ const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
 });
 
 export default function HomePage() {
-  const { selectedColor } = useColorStore();
+  const selectedColor = useColorStore((state) => state.selectedColor);
 
-  // Convert color label to match folder format (e.g., "Chrome" → ".CHROME 360")
-  const folderName = useMemo(() => {
-    return `.${selectedColor.label.toUpperCase()} 360`;
-  }, [selectedColor.label]);
+  // Use selectedColor.label to generate the folder name in lowercase
+  const folderName = selectedColor.label.toLowerCase();
 
-  // Generate frame URLs
-  const frames = useMemo(() => {
-    return Array.from(
-      { length: 96 },
-      (_, i) =>
-        `/images/360frames/${folderName}/${String(i + 1).padStart(4, "0")}.png`
-    );
-  }, [folderName]);
+  const frames = Array.from(
+    { length: 96 },
+    (_, i) =>
+      `/images/360frames/${folderName}-optimized/frame-${String(i + 1).padStart(
+        3,
+        "0"
+      )}.webp`
+  );
   return (
-    <main className="relative ">
-      {/* 360 Viewer Section  */}
-      <section className="h-screen bg-[#cecece]  text-white grid grid-cols-[100px_1fr]">
+    <main className="relative">
+      {/* 360 Viewer Section */}
+      <section className="h-screen bg-[#cecece] text-white grid grid-cols-[100px_1fr]">
         <BikeHero />
-        <div className=" w-full flex items-center">
+        <div className="w-full flex items-center">
           <Viewer360 images={frames} height={700} />
         </div>
       </section>
@@ -44,6 +41,7 @@ export default function HomePage() {
         videoSrc="/placeholder/placeholder-video.mp4"
         cursorEnabled={true}
       />
+
       <div className="w-full bg-[#1e1e21]">
         <ParallaxFXESection
           title="FUTURISTIC DESIGN"
@@ -53,52 +51,55 @@ export default function HomePage() {
             {
               heading: "FROM CONCEPT TO REALITY",
               content:
-                "In 2018, Zero partnered with Bill Webb for a custom FXS build, inspiring future motorcycles. Webb approach pushed boundaries yet maintained relatability and functionality, and from that the FXE was born. The FXE has been embraced by the motorcycle industry and exceeding even our own lofty expectations. The FXE has advanced design influenced by Huge Design in San Francisco that advances transportation thinking. Affordable luxury combines unmatched performance and style. Redefine your ride with the FXE.",
+                "In 2018, Zero partnered with Bill Webb for a custom FXS build...",
             },
             {
               heading: "FROM CONCEPT TO REALITY",
               content:
-                "In 2018, Zero partnered with Bill Webb for a custom FXS build, inspiring future motorcycles. Webb approach pushed boundaries yet maintained relatability and functionality, and from that the FXE was born. The FXE has been embraced by the motorcycle industry and exceeding even our own lofty expectations. The FXE has advanced design influenced by Huge Design in San Francisco that advances transportation thinking. Affordable luxury combines unmatched performance and style. Redefine your ride with the FXE.",
+                "In 2018, Zero partnered with Bill Webb for a custom FXS build...",
             },
             {
               heading: "FROM CONCEPT TO REALITY",
               content:
-                "In 2018, Zero partnered with Bill Webb for a custom FXS build, inspiring future motorcycles. Webb approach pushed boundaries yet maintained relatability and functionality, and from that the FXE was born. The FXE has been embraced by the motorcycle industry and exceeding even our own lofty expectations. The FXE has advanced design influenced by Huge Design in San Francisco that advances transportation thinking. Affordable luxury combines unmatched performance and style. Redefine your ride with the FXE.",
+                "In 2018, Zero partnered with Bill Webb for a custom FXS build...",
             },
           ]}
         />
 
         <ParallaxFXESection
           title="INSTANT TORQUE"
-          description="Partnering with Huge Design, we crafted the future of motorcycles - the FXE. Breathtaking profile, record-breaking performance, and cutting-edge technology that totally redefines motorcycling. Only from the global leader in electric motorcycles. The future is here."
+          description="Partnering with Huge Design, we crafted the future of motorcycles - the FXE..."
           imageSrc="/placeholder/placeholder-8.png"
           features={[
             {
               heading: "FROM CONCEPT TO REALITY",
               content:
-                "In 2018, Zero partnered with Bill Webb for a custom FXS build, inspiring future motorcycles. Webb approach pushed boundaries yet maintained relatability and functionality, and from that the FXE was born. The FXE has been embraced by the motorcycle industry and exceeding even our own lofty expectations. The FXE has advanced design influenced by Huge Design in San Francisco that advances transportation thinking. Affordable luxury combines unmatched performance and style. Redefine your ride with the FXE.",
+                "In 2018, Zero partnered with Bill Webb for a custom FXS build...",
             },
             {
               heading: "FROM CONCEPT TO REALITY",
               content:
-                "In 2018, Zero partnered with Bill Webb for a custom FXS build, inspiring future motorcycles. Webb approach pushed boundaries yet maintained relatability and functionality, and from that the FXE was born. The FXE has been embraced by the motorcycle industry and exceeding even our own lofty expectations. The FXE has advanced design influenced by Huge Design in San Francisco that advances transportation thinking. Affordable luxury combines unmatched performance and style. Redefine your ride with the FXE.",
+                "In 2018, Zero partnered with Bill Webb for a custom FXS build...",
             },
             {
               heading: "FROM CONCEPT TO REALITY",
               content:
-                "In 2018, Zero partnered with Bill Webb for a custom FXS build, inspiring future motorcycles. Webb approach pushed boundaries yet maintained relatability and functionality, and from that the FXE was born. The FXE has been embraced by the motorcycle industry and exceeding even our own lofty expectations. The FXE has advanced design influenced by Huge Design in San Francisco that advances transportation thinking. Affordable luxury combines unmatched performance and style. Redefine your ride with the FXE.",
+                "In 2018, Zero partnered with Bill Webb for a custom FXS build...",
             },
           ]}
           reverse
         />
+
         <ParallaxHero imageSrc="/placeholder.avif" />
-        <div className=" bg-white">
-          <div className=" container">
+
+        <div className="bg-white">
+          <div className="container">
             <BikePerformanceSlider />
           </div>
         </div>
-        <div className=" bg-[#1E1E21]">
-          <div className=" container">
+
+        <div className="bg-[#1E1E21]">
+          <div className="container">
             <TechSpecsComponent />
           </div>
         </div>

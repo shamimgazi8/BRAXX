@@ -24,10 +24,7 @@ const PurchaseButton = () => {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const { selectedColor } = useColorStore();
 
-  const folderName = useMemo(() => {
-    return `.${selectedColor.label.toUpperCase()} 360`;
-  }, [selectedColor.label]);
-
+  const folderName = selectedColor.label.toLowerCase();
   return (
     <>
       {/* Fixed Purchase Button */}
@@ -42,7 +39,7 @@ const PurchaseButton = () => {
         transition={{ duration: 0.3 }}
       >
         <Image
-          src={`/images/360frames/${folderName}/0001.png`}
+          src={`/images/360frames/${folderName}-optimized/frame-001.webp`}
           alt="img"
           height={60}
           width={120}
@@ -121,7 +118,7 @@ const PurchaseButton = () => {
 
                   {/* Bike Image */}
                   <img
-                    src={`/images/360frames/${folderName}/0001.png`}
+                    src={`/images/360frames/${folderName}-optimized/frame-001.webp`}
                     alt={`Bike in ${selectedColor.label} color`}
                     className="relative w-full max-w-[360px] h-auto rounded-xl z-10"
                   />
