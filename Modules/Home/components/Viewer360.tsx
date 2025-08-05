@@ -84,7 +84,7 @@ export default function Viewer360({
         height,
         touchAction: "none",
         userSelect: "none",
-        cursor: 'url("/icons-360.png") 8 8, grab', // Use the new, smaller image and adjust the hotspot
+        cursor: 'url("/icons-360.png") 8 8, grab',
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}

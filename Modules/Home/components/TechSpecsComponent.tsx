@@ -40,7 +40,7 @@ const TechSpecItem: React.FC<TechSpecItemProps> = ({
           </div>
         )}
       </div>
-      <div className=" flex justify-center items-center">:</div>
+      <div className=" md:flex hidden justify-center items-center">:</div>
       <div className="text-[12px]  text-white flex justify-start items-start">
         {value}
       </div>
@@ -59,7 +59,7 @@ const TechSpecsComponent: React.FC = () => {
       {/* Title section, visible on all screen sizes */}
       <div className="m-auto pt-[150px] px-8 ">
         <div className="border-t border-gray-700/50  px-[64px]">
-          <h2 className="text-[90px]  tracking-wide uppercase">
+          <h2 className="md:text-[90px] text-[30px]  tracking-wide uppercase">
             Technical Specifications
           </h2>
         </div>

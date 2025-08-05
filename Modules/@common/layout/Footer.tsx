@@ -54,7 +54,7 @@ const Footer = ({ observerRef }: FooterProps) => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-3xl font-bold ml-5">BRAXX</span>
+              <span className="md:text-3xl font-bold ml-5">BRAXX</span>
             </Link>
           </div>
 
@@ -96,7 +96,7 @@ const Footer = ({ observerRef }: FooterProps) => {
 
           {/* Newsletter signup form */}
           <form className=" bg-[#1f1f1f] text-[#111111] w-full lg:w-auto  flex items-center justify-between ">
-            <span className="text-sm  tracking-wide text-white/60  p-4 lg:p-8 ">
+            <span className="md:text-sm text-[10px]  tracking-wide text-white/60  p-4 lg:p-8 ">
               Sign up for our newsletter to receive updates about Zero
               Motorcycles products, events, offers, and promotions.
             </span>
