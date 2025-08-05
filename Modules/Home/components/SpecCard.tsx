@@ -1,5 +1,5 @@
 import React from "react";
-import ColorSelector from "./ColorSelector";
+import ColorSelector from "../../@common/ColorSelector";
 
 const ModelYearSwitcher = () => (
   <div className="flex flex-col text-white items-end translate-x-[-30px]">
@@ -39,7 +39,7 @@ const BikeSpecs = () => (
         <p className=" mb-[4px] text-white opacity-50">Speed</p>
         <span className="heading--6 text-white">85 MPH</span>
       </div>
-      {/* <div>color selector</div> */}
+
       <div className="pointer-events-auto">
         <ColorSelector />
       </div>

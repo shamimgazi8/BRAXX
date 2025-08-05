@@ -3,10 +3,10 @@ import dynamic from "next/dynamic";
 import BikeHero from "./components/SpecCard";
 import ParallaxHero from "../@common/Parallax/ParallaxHero";
 import ParallaxFXESection from "../@common/Parallax/ParallaxSection";
-import BikePerformanceSlider from "../@common/BikePerformenceSlider";
-import TechSpecsComponent from "../@common/TechSpecsComponent";
+import BikePerformanceSlider from "./components/BikePerformenceSlider";
+import TechSpecsComponent from "./components/TechSpecsComponent";
 
-// Dynamically import 360 viewer if you have one (placeholder for now)
+// Dynamically import 360 viewer
 const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
   ssr: false,
 });
@@ -20,7 +20,7 @@ export default function HomePage() {
 
   return (
     <main className="relative ">
-      {/* 360 Viewer Section (Placeholder) */}
+      {/* 360 Viewer Section  */}
       <section className="h-screen bg-[#cecece]  text-white grid grid-cols-[100px_1fr]">
         <BikeHero />
         <div className=" w-full flex items-center">
@@ -30,8 +30,8 @@ export default function HomePage() {
 
       <ParallaxHero
         imageSrc="/placeholder/placeholder-10.png"
-        videoSrc="/placeholder/placeholder-video.mp4" // optional, omit to disable video
-        cursorEnabled={true} // optional, default true; set false to disable custom cursor
+        videoSrc="/placeholder/placeholder-video.mp4"
+        cursorEnabled={true}
       />
       <div className="w-full bg-[#1e1e21]">
         <ParallaxFXESection

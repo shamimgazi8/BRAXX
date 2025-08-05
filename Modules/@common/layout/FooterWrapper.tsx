@@ -3,7 +3,7 @@
 import { useInView } from "react-intersection-observer";
 import { AnimatePresence, motion } from "framer-motion";
 import PurchaseButton from "@/Modules/@common/PurchaseButton";
-import Footer from "@/Modules/@common/Footer";
+import Footer from "@/Modules/@common/layout/Footer";
 import { useEffect } from "react";
 
 export default function FooterWrapper() {

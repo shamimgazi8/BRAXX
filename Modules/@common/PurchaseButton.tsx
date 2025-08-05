@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MoveRight, X } from "lucide-react";
 import Image from "next/image";
-import ColorSelector from "../Home/components/ColorSelector";
+import ColorSelector from "./ColorSelector";
 
 const circleVariants = {
   hidden: { scale: 0, opacity: 0 },
