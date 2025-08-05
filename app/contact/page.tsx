@@ -1,6 +1,6 @@
-import ContactUs from "@/Modules/ContactUs"
+import ContactPage from "@/Modules/ContactUs";
 
-const ContactPage = () => {
-  return <ContactUs />
-}
-export default ContactPage;
+const Contact = () => {
+  return <ContactPage />;
+};
+export default Contact;

@@ -59,7 +59,7 @@ const TechSpecsComponent: React.FC = () => {
       {/* Title section, visible on all screen sizes */}
       <div className="m-auto pt-[150px] px-8 ">
         <div className="border-t border-gray-700/50  px-[64px]">
-          <h2 className="md:text-[90px] text-[30px]  tracking-wide uppercase">
+          <h2 className="md:text-[90px] text-[30px] text-white  tracking-wide uppercase">
             Technical Specifications
           </h2>
         </div>

@@ -1,8 +1,6 @@
-import About from "@/Modules/About";
+import AboutPage from "@/Modules/About";
 
-const AboutPage = () => {
-  return (
-    <About />
-  );
-}
-export default AboutPage;
+const About = () => {
+  return <AboutPage />;
+};
+export default About;
