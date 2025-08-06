@@ -100,7 +100,7 @@ export default function Viewer360({
       style={{
         width,
         height,
-        touchAction: "none",
+        touchAction: "pan-y",
         userSelect: "none",
         cursor: 'url("/icons-360.png") 8 8, grab',
       }}
