@@ -37,9 +37,20 @@ export default function HomePage() {
   return (
     <main className="relative">
       {/* 360 Viewer Section */}
-      <section className="h-screen bg-[#cecece] text-white grid grid-cols-[100px_1fr]">
-        <BikeHero />
-        <div className="w-full flex items-center">
+      <section className="h-screen bg-[#cecece] text-white grid  md:grid-cols-[100px_1fr]">
+        <div className="order-2 md:order-1 md:block hidden">
+          <BikeHero />
+        </div>
+        <div className="order-2 md:order-1  md:hidden block">
+          <h1 className=" text-[40px]">BRAXX O3</h1>
+          <h1 className=" text-[40px]">BRAXX O3</h1>
+          <h1 className=" text-[40px]">BRAXX O3</h1>
+          <h1 className=" text-[40px]">BRAXX O3</h1>
+          <h1 className=" text-[40px]">BRAXX O3</h1>
+          <h1 className=" text-[40px]">BRAXX O3</h1>
+          <h1 className=" text-[40px]">BRAXX O3</h1>
+        </div>
+        <div className="order-1 md:order-2 w-full flex items-center">
           <Viewer360 images={frames} height={700} />
         </div>
       </section>

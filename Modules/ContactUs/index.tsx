@@ -11,7 +11,7 @@ export default function ContactPage() {
       <div className="overflow-hidden">
         <HeroBanner />
       </div>
-      <div>
+      <div className="bg-white">
         <ContactUsForm />
       </div>
       <div className="relative flex flex-col bg-white text-black py-8 lg:py-12">

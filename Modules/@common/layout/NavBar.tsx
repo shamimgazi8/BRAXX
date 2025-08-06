@@ -2,15 +2,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react"; // Install lucide-react or replace with any icon set
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -24,26 +24,60 @@ export default function NavBar() {
     >
       <div
         className={cn(
-          " px-6 flex justify-between items-center transition-all duration-300 ease-in-out mx-5",
+          "px-6 flex justify-between items-center transition-all duration-300 ease-in-out mx-5",
           scrolled ? "py-[18px]" : "py-[28px]"
         )}
       >
         {/* Logo */}
-        <Link href="/" className="text-white text-4xl tracking-wide ">
+        <Link href="/" className="text-white text-4xl tracking-wide">
           BRAXX
         </Link>
 
-        {/* Links */}
+        {/* Desktop Links */}
         <div className="space-x-6 hidden md:flex">
           <NavLink href="/about">About</NavLink>
           <NavLink href="/contact">Contact</NavLink>
         </div>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden text-white"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="md:hidden bg-black/90 backdrop-blur-md px-6 py-4 space-y-4 text-white"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <MobileLink
+              href="/about"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
+            </MobileLink>
+            <MobileLink
+              href="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </MobileLink>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
 
-// NavLink component to encapsulate the Framer Motion logic
 const NavLink = ({ href, children }: any) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -65,3 +99,13 @@ const NavLink = ({ href, children }: any) => {
     </Link>
   );
 };
+
+const MobileLink = ({ href, children, onClick }: any) => (
+  <Link
+    href={href}
+    className="block text-lg tracking-wide font-medium"
+    onClick={onClick}
+  >
+    {children}
+  </Link>
+);

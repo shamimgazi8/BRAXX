@@ -33,7 +33,7 @@ export default function ContactUsForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-xl mx-auto space-y-6 mt-10"
+      className="max-w-xl mx-4 space-y-6 pt-10 bg-white"
     >
       <div>
         <Label className="text-[35px]" htmlFor="name">

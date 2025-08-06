@@ -4,27 +4,32 @@
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
-  font-family: 'LeagueGothic';
-  src: url('/fonts/LeagueGothic-Regular.woff2') format('woff2');
+  font-family: "LeagueGothic";
+  src: url("/fonts/LeagueGothic-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-    letter-spacing: 3px;
+  letter-spacing: 3px;
 }
 @font-face {
-    font-family: "Px Grotesk Regular";
-    src: url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.eot");
-    src: url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.svg#Px Grotesk Regular")format("svg");
+  font-family: "Px Grotesk Regular";
+  src: url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.eot");
+  src: url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/9527a4c4f55e8075eb6a60fe577d89c4.svg#Px Grotesk Regular")
+      format("svg");
 }
-.font-gro{
+.font-gro {
   font-family: "Px Grotesk Regular";
 }
-.font-Leag{
-   font-family: 'LeagueGothic', sans-serif;
+.font-Leag {
+  font-family: "LeagueGothic", sans-serif;
 }
 
 @theme inline {
@@ -68,16 +73,14 @@
 }
 
 body {
-  font-family: 'LeagueGothic', sans-serif;
+  font-family: "LeagueGothic", sans-serif;
   overflow-x: hidden;
-
+  background-color: #cecece;
 }
 .container {
-
-            max-width: 1550px; /* Max width of 1200px on large screens */
-            height: auto; /* Height adjusts to content */
-            margin: auto;
-
+  max-width: 1550px; /* Max width of 1200px on large screens */
+  height: auto; /* Height adjusts to content */
+  margin: auto;
 }
 
 :root {
