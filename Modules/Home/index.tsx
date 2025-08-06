@@ -1,11 +1,14 @@
 "use client";
 import dynamic from "next/dynamic";
-import BikeHero from "./components/SpecCard";
+import BikeHero from "./components/BikeHero";
 import ParallaxHero from "../@common/Parallax/ParallaxHero";
 import ParallaxFXESection from "../@common/Parallax/ParallaxSection";
 import BikePerformanceSlider from "./components/BikePerformenceSlider";
 import TechSpecsComponent from "./components/TechSpecsComponent";
 import { useColorStore } from "@/store/useColorStore";
+import { bikeHeroData } from "@/Data/BikeHeroData";
+import ColorSelector from "../@common/ColorSelector";
+import BikeHeroMobile from "./components/BikeHeroMobile";
 
 // Dynamically import 360 viewer
 const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
@@ -13,6 +16,7 @@ const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
 });
 
 export default function HomePage() {
+  const { specs } = bikeHeroData;
   const selectedColor = useColorStore((state) => state.selectedColor);
 
   // Use selectedColor.label to generate the folder name in lowercase
@@ -42,13 +46,7 @@ export default function HomePage() {
           <BikeHero />
         </div>
         <div className="order-2 md:order-1  md:hidden block">
-          <h1 className=" text-[40px]">BRAXX O3</h1>
-          <h1 className=" text-[40px]">BRAXX O3</h1>
-          <h1 className=" text-[40px]">BRAXX O3</h1>
-          <h1 className=" text-[40px]">BRAXX O3</h1>
-          <h1 className=" text-[40px]">BRAXX O3</h1>
-          <h1 className=" text-[40px]">BRAXX O3</h1>
-          <h1 className=" text-[40px]">BRAXX O3</h1>
+          <BikeHeroMobile />
         </div>
         <div className="order-1 md:order-2 w-full flex items-center">
           <Viewer360 images={frames} height={700} />

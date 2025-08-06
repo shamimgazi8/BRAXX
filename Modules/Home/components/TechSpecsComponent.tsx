@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { ChevronRight, Info } from "lucide-react"; // Using lucide-react for icons
+import { ChevronRight, Info } from "lucide-react";
 import { techSpecsData } from "@/Data/TechSpecsData";
-
-// Data structure to hold the technical specifications
 
 interface TechSpecItemProps {
   label: string;
@@ -10,7 +8,6 @@ interface TechSpecItemProps {
   tooltip: string | null;
 }
 
-// A helper component to render each specification item with a tooltip
 const TechSpecItem: React.FC<TechSpecItemProps> = ({
   label,
   value,
@@ -19,7 +16,7 @@ const TechSpecItem: React.FC<TechSpecItemProps> = ({
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
-    <div className="grid grid-cols-[1fr_1fr_2fr] py-2 items-center border-b border-gray-700/50 w-[800px] font-gro">
+    <div className="grid grid-cols-[1fr_1fr_auto] py-2 items-center border-b border-gray-700/50 w-full max-w-[800px] font-gro overflow-x-auto">
       <div className="flex items-center text-sm font-light text-gray-400">
         <span className="mr-2">{label}</span>
         {tooltip && (
@@ -40,8 +37,8 @@ const TechSpecItem: React.FC<TechSpecItemProps> = ({
           </div>
         )}
       </div>
-      <div className=" md:flex hidden justify-center items-center">:</div>
-      <div className="text-[12px]  text-white flex justify-start items-start">
+      <div className="md:flex hidden justify-center items-center">:</div>
+      <div className="text-[12px] text-white flex justify-start items-start break-words">
         {value}
       </div>
     </div>
@@ -50,25 +47,22 @@ const TechSpecItem: React.FC<TechSpecItemProps> = ({
 
 const TechSpecsComponent: React.FC = () => {
   const [activeSpec, setActiveSpec] = useState(techSpecsData[0].id);
-
-  // Find the currently active specification object
   const activeSpecData = techSpecsData.find((spec) => spec.id === activeSpec);
 
   return (
     <>
-      {/* Title section, visible on all screen sizes */}
-      <div className="m-auto pt-[150px] px-8 ">
-        <div className="border-t border-gray-700/50  px-[64px]">
-          <h2 className="md:text-[90px] text-[30px] text-white  tracking-wide uppercase">
+      {/* Title section */}
+      <div className="m-auto pt-[150px] px-8">
+        <div className="border-t border-gray-700/50 px-[64px]">
+          <h2 className="md:text-[90px] text-[30px] text-white tracking-wide uppercase">
             Technical Specifications
           </h2>
         </div>
       </div>
 
       <div className="flex flex-col lg:flex-row bg-[#1E1E21] min-h-screen p-8 text-white font-inter">
-        {/* Main content grid */}
         <div className="w-full lg:w-2/3 lg:pl-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left side: Navigation tabs */}
+          {/* Navigation Tabs */}
           <div className="col-span-1">
             <ul className="space-y-1">
               {techSpecsData.map((spec, index) => (
@@ -104,11 +98,11 @@ const TechSpecsComponent: React.FC = () => {
                     />
                   </button>
 
-                  {/* Mobile view content (collapsible) */}
+                  {/* Mobile Collapsible Content */}
                   <div
                     className={`px-4 lg:hidden transition-all duration-300 ease-in-out ${
                       activeSpec === spec.id
-                        ? "max-h-96 opacity-100"
+                        ? "max-h-[1000px] opacity-100"
                         : "max-h-0 opacity-0 overflow-hidden"
                     }`}
                   >
@@ -125,7 +119,7 @@ const TechSpecsComponent: React.FC = () => {
             </ul>
           </div>
 
-          {/* Right side: Detailed information for the selected tab (Desktop view) */}
+          {/* Right Panel (Desktop only) */}
           <div className="hidden lg:block col-span-1 lg:pl-16">
             {activeSpecData && (
               <div>
