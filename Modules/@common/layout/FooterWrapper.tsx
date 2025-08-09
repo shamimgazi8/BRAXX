@@ -6,6 +6,7 @@ import PurchaseButton from "@/Modules/@common/PurchaseButton";
 import Footer from "@/Modules/@common/layout/Footer";
 import { useEffect } from "react";
 import ScrollToTopButton from "../ScrollToTop";
+import PreOrderCart from "../Pre-orderCart";
 
 export default function FooterWrapper() {
   const { ref, inView } = useInView({
@@ -27,7 +28,10 @@ export default function FooterWrapper() {
             className="fixed bottom-6 right-6 z-50"
           >
             <ScrollToTopButton />
-            <PurchaseButton />
+            {/* <PurchaseButton /> */}
+            <div className=" fixed bottom-[-30px] right-[-60px] scale-75 ">
+              <PreOrderCart />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
