@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/Modules/@common/layout/NavBar";
 import FooterWrapper from "@/Modules/@common/layout/FooterWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"], // choose needed weights
 });
 
 export const metadata: Metadata = {
@@ -27,9 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${darkerGrotesque.className} antialiased`}>
         <NavBar />
         {children}
         <FooterWrapper />

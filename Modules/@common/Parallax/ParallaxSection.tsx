@@ -11,6 +11,7 @@ interface ParallaxSectionProps {
   features: { heading: string; content: string }[];
   imageSrc: string;
   reverse?: boolean;
+  overlayIcon?: string; // new prop for overlay image
 }
 
 export default function ParallaxFXESection({
@@ -19,19 +20,12 @@ export default function ParallaxFXESection({
   features,
   imageSrc,
   reverse = false,
+  overlayIcon = "/placeholder/placeholder-1.png", // default example image
 }: ParallaxSectionProps) {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
     <div className="relative w-full font-gro">
-      {/* Title overlay (only on large screens, centered across full section) */}
-      <div className="pointer-events-none absolute top-[50vh] left-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
-        <h2 className="whitespace-nowrap text-white text-[6vw] lg:text-[160px] leading-none text-center font-Leag">
-          {title}
-        </h2>
-      </div>
-
-      {/* Content layout */}
       <div
         className={clsx(
           "flex flex-col lg:flex-row",
@@ -48,14 +42,36 @@ export default function ParallaxFXESection({
             priority
           />
 
-          {/* Mobile title (only visible on small screens) */}
+          {/* Overlay image (50x50, right center) */}
+          <div
+            className={`absolute  top-1/2 -translate-y-1/2 z-20 ${
+              reverse ? "left-0" : "right-0"
+            }`}
+          >
+            <Image
+              src={overlayIcon}
+              alt="Overlay icon"
+              width={300}
+              height={300}
+              className=""
+            />
+          </div>
+
+          {/* Mobile title */}
           <div className="absolute inset-0 flex items-center justify-center lg:hidden">
-            <h2 className="text-center text-[56px] text-white">{title}</h2>
+            <h2 className="text-center text-[56px] text-white font-Leag">
+              {title}
+            </h2>
           </div>
         </div>
 
         {/* Text section */}
         <div className="w-full flex-1 mb-[100px]">
+          <div className="flex justify-center items-center">
+            <h2 className="text-[100px] text-white font-semibold font-Leag">
+              {title}
+            </h2>
+          </div>
           <div className="mt-4 w-full px-3 lg:mt-[75vh] lg:px-10">
             <motion.p
               initial={{ opacity: 0, y: 30 }}

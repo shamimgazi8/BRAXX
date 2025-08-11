@@ -9,6 +9,9 @@ import { useColorStore } from "@/store/useColorStore";
 import { bikeHeroData } from "@/Data/BikeHeroData";
 import ColorSelector from "../@common/ColorSelector";
 import BikeHeroMobile from "./components/BikeHeroMobile";
+import PreOrderCart from "../@common/Pre-orderCart";
+import HeroSpecs from "./components/HeroSpec";
+import Image from "next/image";
 
 // Dynamically import 360 viewer
 const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
@@ -41,7 +44,7 @@ export default function HomePage() {
   return (
     <main className="relative">
       {/* 360 Viewer Section */}
-      <section className="h-screen bg-[#cecece] text-white grid  md:grid-cols-[100px_1fr]">
+      {/* <section className="h-screen bg-[#cecece] text-white grid  md:grid-cols-[100px_1fr]">
         <div className="order-2 md:order-1 md:block hidden">
           <BikeHero />
         </div>
@@ -51,6 +54,22 @@ export default function HomePage() {
         <div className="order-1 md:order-2 w-full flex items-center">
           <Viewer360 images={frames} height={700} />
         </div>
+      </section> */}
+      <section className="h-screen flex justify-center items-start mt-[10vh] relative">
+        <div className="w-[380px] absolute left-[8vw]">
+          <HeroSpecs />
+        </div>
+
+        <div>
+          <Viewer360 images={frames} height={600} />
+          <div className=" flex  justify-center gap-5">
+            <ColorSelector />
+            <ColorSelector />
+          </div>
+        </div>
+        {/* <div className=" fixed bottom-[-30px] right-[-60px] scale-75 ">
+          <PreOrderCart />
+        </div> */}
       </section>
 
       <ParallaxHero
@@ -60,6 +79,68 @@ export default function HomePage() {
       />
 
       <div className="w-full bg-[#1e1e21]">
+        <div className="bg-[#2a282e] h-[50px] flex justify-around items-center translate-y-[-2px]">
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+          <Image
+            src={"/placeholder/pl-3.png"}
+            alt="placeholder logo"
+            height={50}
+            width={50}
+          />
+        </div>
         <ParallaxFXESection
           title="FUTURISTIC DESIGN"
           description="Partnering with Huge Design, we crafted the future of motorcycles - the FXE. Breathtaking profile, record-breaking performance, and cutting-edge technology that totally redefines motorcycling. Only from the global leader in electric motorcycles. The future is here."

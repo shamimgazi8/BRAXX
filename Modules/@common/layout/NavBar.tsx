@@ -28,8 +28,12 @@ export default function NavBar() {
           scrolled ? "py-[18px]" : "py-[28px]"
         )}
       >
+        <div></div>
         {/* Logo */}
-        <Link href="/" className="text-white text-4xl tracking-wide">
+        <Link
+          href="/"
+          className="text-white text-4xl tracking-wide font-extrabold"
+        >
           BRAXX
         </Link>
 
