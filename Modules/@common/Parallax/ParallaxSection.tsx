@@ -68,7 +68,9 @@ export default function ParallaxFXESection({
         {/* Text section */}
         <div className="w-full flex-1 mb-[100px]">
           <div className="flex justify-center items-center">
-            <h2 className="text-[100px] text-white font-Leag">{title}</h2>
+            <h2 className="text-[100px] text-white font-semibold font-Leag">
+              {title}
+            </h2>
           </div>
           <div className="mt-4 w-full px-3 lg:mt-[75vh] lg:px-10">
             <motion.p

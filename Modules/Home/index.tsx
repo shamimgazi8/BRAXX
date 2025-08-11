@@ -56,12 +56,12 @@ export default function HomePage() {
         </div>
       </section> */}
       <section className="h-screen flex justify-center items-start mt-[10vh] relative">
-        <div className="w-[300px] absolute left-[8vw]">
+        <div className="w-[380px] absolute left-[8vw]">
           <HeroSpecs />
         </div>
 
         <div>
-          <Viewer360 images={frames} height={700} />
+          <Viewer360 images={frames} height={600} />
           <div className=" flex  justify-center gap-5">
             <ColorSelector />
             <ColorSelector />

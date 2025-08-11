@@ -30,7 +30,10 @@ export default function NavBar() {
       >
         <div></div>
         {/* Logo */}
-        <Link href="/" className="text-white text-4xl tracking-wide">
+        <Link
+          href="/"
+          className="text-white text-4xl tracking-wide font-extrabold"
+        >
           BRAXX
         </Link>
 

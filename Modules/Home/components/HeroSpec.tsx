@@ -33,19 +33,19 @@ const HeroSpecs = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl text-white bg-transparent">
+    <div className=" text-white bg-transparent">
       {/* Title */}
-      <h1 className="text-[120px] font-thin ">
-        O3 <span className="font-normal text-[90px]">PRO</span>
+      <h1 className="text-[130px] font-semibold ">
+        O3 <span className=" text-[100px]">PRO</span>
       </h1>
 
       {/* Sections */}
-      <div className="border-l-8 border-white pl-6 space-y-2">
+      <div className="border-l-8 border-white pl-2 space-y-2 font-semibold w-[350px]">
         {sections.map((section, idx) => (
-          <div key={idx} className=" pb-2">
+          <div key={idx} className=" pb-2 font-bold">
             {/* Section Header */}
             <div
-              className="flex justify-between items-center cursor-pointer border-b"
+              className="flex justify-between items-center cursor-pointer border-b-[2px]"
               onClick={() => toggleSection(section.title)}
             >
               <h3 className="text-lg font-light">{section.title}</h3>
@@ -58,11 +58,15 @@ const HeroSpecs = () => {
 
             {/* Section Items */}
             {openSection === section.title && section.items && (
-              <div className="mt-4 ml-4 grid grid-cols-2 gap-y-3 text-sm">
+              <div className="mt-4  grid grid-cols-2  text-[16px] font-bold  ">
                 {section.items.map((item, i) => (
                   <React.Fragment key={i}>
-                    <div className="text-white/80 border-b">{item.label}</div>
-                    <div className="text-left border-b">{item.value}</div>
+                    <div className=" border-b text-right pr-[70px] font-bold">
+                      {item.label}
+                    </div>
+                    <div className="text-left border-b font-normal">
+                      {item.value}
+                    </div>
                   </React.Fragment>
                 ))}
               </div>
