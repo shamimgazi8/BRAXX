@@ -6,9 +6,7 @@ import BikePerformanceSlider from "./components/BikePerformenceSlider";
 import TechSpecsComponent from "./components/TechSpecsComponent";
 import { useColorStore } from "@/store/useColorStore";
 import ColorSelector from "../@common/ColorSelector";
-
 import HeroSpecs from "./components/HeroSpec";
-import Image from "next/image";
 import LogoMarquee from "../@common/InfinityLogoScroll";
 
 // Dynamically import 360 viewer

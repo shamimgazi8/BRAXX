@@ -15,10 +15,12 @@ export default function Viewer360({
 }: Viewer360Props) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [scale, setScale] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const lastX = useRef<number | null>(null);
   const deltaAccum = useRef(0);
+  const initialPinchDistance = useRef<number | null>(null);
   const frameCount = images.length;
   const sensitivity = 5;
 
@@ -77,21 +79,47 @@ export default function Viewer360({
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    dragging.current = true;
-    lastX.current = e.touches[0].clientX;
+    if (e.touches.length === 2) {
+      // Pinch-to-zoom logic
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      initialPinchDistance.current = Math.sqrt(dx * dx + dy * dy);
+    } else if (e.touches.length === 1) {
+      // 360-view dragging logic
+      dragging.current = true;
+      lastX.current = e.touches[0].clientX;
+    }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!dragging.current || lastX.current === null) return;
-    const deltaX = e.touches[0].clientX - lastX.current;
-    lastX.current = e.touches[0].clientX;
-    updateFrame(deltaX);
+    if (e.touches.length === 2 && initialPinchDistance.current !== null) {
+      // Pinch-to-zoom logic
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const currentPinchDistance = Math.sqrt(dx * dx + dy * dy);
+
+      const scaleChange = currentPinchDistance / initialPinchDistance.current;
+      const newScale = Math.min(Math.max(1, scale * scaleChange), 3);
+
+      setScale(newScale);
+      initialPinchDistance.current = currentPinchDistance;
+    } else if (
+      e.touches.length === 1 &&
+      dragging.current &&
+      lastX.current !== null
+    ) {
+      // 360-view dragging logic
+      const deltaX = e.touches[0].clientX - lastX.current;
+      lastX.current = e.touches[0].clientX;
+      updateFrame(deltaX);
+    }
   };
 
   const handleTouchEnd = () => {
     dragging.current = false;
     lastX.current = null;
     deltaAccum.current = 0;
+    initialPinchDistance.current = null;
   };
 
   return (
@@ -122,6 +150,9 @@ export default function Viewer360({
             height: "100%",
             objectFit: "contain",
             pointerEvents: "none",
+            transform: `scale(${scale})`,
+            transformOrigin: "center center",
+            transition: "transform 0.1s ease-out",
           }}
         />
       ) : (
