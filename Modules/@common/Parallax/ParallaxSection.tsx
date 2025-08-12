@@ -44,7 +44,7 @@ export default function ParallaxFXESection({
 
           {/* Overlay image (50x50, right center) */}
           <div
-            className={`absolute  top-1/2 -translate-y-1/2 z-20 ${
+            className={`absolute top-1/2 -translate-y-1/2 z-20 ${
               reverse ? "left-0" : "right-0"
             }`}
           >
@@ -53,22 +53,15 @@ export default function ParallaxFXESection({
               alt="Overlay icon"
               width={300}
               height={300}
-              className=""
+              className="w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
             />
-          </div>
-
-          {/* Mobile title */}
-          <div className="absolute inset-0 flex items-center justify-center lg:hidden">
-            <h2 className="text-center text-[56px] text-white font-Leag">
-              {title}
-            </h2>
           </div>
         </div>
 
         {/* Text section */}
         <div className="w-full flex-1 mb-[100px]">
           <div className="flex justify-center items-center">
-            <h2 className="text-[100px] text-white font-semibold font-Leag">
+            <h2 className="md:text-[100px] text-[50px] text-white font-semibold font-Leag">
               {title}
             </h2>
           </div>
