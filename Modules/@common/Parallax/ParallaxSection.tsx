@@ -41,21 +41,6 @@ export default function ParallaxFXESection({
             className="object-cover"
             priority
           />
-
-          {/* Overlay image (50x50, right center) */}
-          <div
-            className={`absolute top-1/2 -translate-y-1/2 z-20 ${
-              reverse ? "left-0" : "right-0"
-            }`}
-          >
-            <Image
-              src={overlayIcon}
-              alt="Overlay icon"
-              width={300}
-              height={300}
-              className="w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
-            />
-          </div>
         </div>
 
         {/* Text section */}

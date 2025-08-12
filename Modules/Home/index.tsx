@@ -9,6 +9,7 @@ import ColorSelector from "../@common/ColorSelector";
 
 import HeroSpecs from "./components/HeroSpec";
 import Image from "next/image";
+import LogoMarquee from "../@common/InfinityLogoScroll";
 
 // Dynamically import 360 viewer
 const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
@@ -53,17 +54,7 @@ export default function HomePage() {
         cursorEnabled={true}
       />
       <div className="w-full bg-[#1e1e21]">
-        <div className="bg-[#2a282e] h-[50px] flex justify-around items-center translate-y-[-2px]">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <Image
-              key={index}
-              src={"/placeholder/pl-3.png"}
-              alt="placeholder logo"
-              height={50}
-              width={50}
-            />
-          ))}
-        </div>
+        <LogoMarquee />
         <ParallaxFXESection
           title="FUTURISTIC DESIGN"
           description="Partnering with Huge Design, we crafted the future of motorcycles - the FXE. Breathtaking profile, record-breaking performance, and cutting-edge technology that totally redefines motorcycling. Only from the global leader in electric motorcycles. The future is here."
