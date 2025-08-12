@@ -29,7 +29,7 @@ export default function FooterWrapper() {
           >
             <ScrollToTopButton />
             {/* <PurchaseButton /> */}
-            <div className="fixed right-0 bottom-0 z-[9999]">
+            <div className="fixed right-0 bottom-0 z-[9999] w-full sm:w-auto">
               <PreOrderCart />
             </div>
           </motion.div>

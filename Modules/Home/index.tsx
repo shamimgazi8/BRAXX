@@ -1,15 +1,12 @@
 "use client";
 import dynamic from "next/dynamic";
-import BikeHero from "./components/BikeHero";
 import ParallaxHero from "../@common/Parallax/ParallaxHero";
 import ParallaxFXESection from "../@common/Parallax/ParallaxSection";
 import BikePerformanceSlider from "./components/BikePerformenceSlider";
 import TechSpecsComponent from "./components/TechSpecsComponent";
 import { useColorStore } from "@/store/useColorStore";
-import { bikeHeroData } from "@/Data/BikeHeroData";
 import ColorSelector from "../@common/ColorSelector";
-import BikeHeroMobile from "./components/BikeHeroMobile";
-import PreOrderCart from "../@common/Pre-orderCart";
+
 import HeroSpecs from "./components/HeroSpec";
 import Image from "next/image";
 
@@ -19,20 +16,10 @@ const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
 });
 
 export default function HomePage() {
-  const { specs } = bikeHeroData;
   const selectedColor = useColorStore((state) => state.selectedColor);
 
-  // Use selectedColor.label to generate the folder name in lowercase
   const folderName = selectedColor.label.toLowerCase();
 
-  // const frames = Array.from(
-  //   { length: 96 },
-  //   (_, i) =>
-  //     `/images/360frames/${folderName}-optimized/frame-${String(i + 1).padStart(
-  //       3,
-  //       "0"
-  //     )}.webp`
-  // );
   const frames = Array.from(
     { length: 96 },
     (_, i) =>
@@ -43,20 +30,8 @@ export default function HomePage() {
 
   return (
     <main className="relative">
-      {/* 360 Viewer Section */}
-      {/* <section className="h-screen bg-[#cecece] text-white grid  md:grid-cols-[100px_1fr]">
-        <div className="order-2 md:order-1 md:block hidden">
-          <BikeHero />
-        </div>
-        <div className="order-2 md:order-1  md:hidden block">
-          <BikeHeroMobile />
-        </div>
-        <div className="order-1 md:order-2 w-full flex items-center">
-          <Viewer360 images={frames} height={700} />
-        </div>
-      </section> */}
-      <section className="h-screen flex justify-center items-start mt-[10vh] relative">
-        <div className="w-[380px] absolute left-[8vw]">
+      <section className="h-screen flex md:flex-row flex-col justify-center items-start mt-[10vh] relative">
+        <div className="w-[380px] absolute left-[8vw] md:flex hidden">
           <HeroSpecs />
         </div>
 
@@ -67,9 +42,9 @@ export default function HomePage() {
             <ColorSelector />
           </div>
         </div>
-        {/* <div className=" fixed bottom-[-30px] right-[-60px] scale-75 ">
-          <PreOrderCart />
-        </div> */}
+        <div className="w-full  justify-center items-center   flex md:hidden">
+          <HeroSpecs />
+        </div>
       </section>
 
       <ParallaxHero
@@ -77,69 +52,17 @@ export default function HomePage() {
         videoSrc="/placeholder/placeholder-video.mp4"
         cursorEnabled={true}
       />
-
       <div className="w-full bg-[#1e1e21]">
         <div className="bg-[#2a282e] h-[50px] flex justify-around items-center translate-y-[-2px]">
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
-          <Image
-            src={"/placeholder/pl-3.png"}
-            alt="placeholder logo"
-            height={50}
-            width={50}
-          />
+          {Array.from({ length: 8 }).map((_, index) => (
+            <Image
+              key={index}
+              src={"/placeholder/pl-3.png"}
+              alt="placeholder logo"
+              height={50}
+              width={50}
+            />
+          ))}
         </div>
         <ParallaxFXESection
           title="FUTURISTIC DESIGN"

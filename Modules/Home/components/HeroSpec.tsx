@@ -22,11 +22,27 @@ const HeroSpecs = () => {
         { label: "Range", value: "" },
       ],
     },
-    { title: "Geometry" },
-    { title: "Components" },
+    {
+      title: "Geometry",
+      items: [
+        { label: "Power", value: "Peak 8kW" },
+        { label: "Motor Torque", value: "Peak 8kW" },
+        { label: "Wheel Torque", value: "" },
+        { label: "Range", value: "" },
+      ],
+    },
+    {
+      title: "Components",
+      items: [
+        { label: "Power", value: "Peak 8kW" },
+        { label: "Motor Torque", value: "Peak 8kW" },
+        { label: "Wheel Torque", value: "" },
+        { label: "Range", value: "" },
+      ],
+    },
   ];
 
-  const [openSection, setOpenSection] = useState<string | null>("Performance");
+  const [openSection, setOpenSection] = useState<string | null>(null);
 
   const toggleSection = (title: string) => {
     setOpenSection((prev) => (prev === title ? null : title));
