@@ -143,7 +143,7 @@ export default function Viewer360({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="flex gap-12 items-center">
+      <div className="flex md:gap-12 gap-5 items-center md:mt-0 mt-[220px] ">
         {productData.map((product: any, index: number) => (
           <React.Fragment key={index}>
             <ProductDisplay

@@ -16,18 +16,19 @@ export const ProductDisplay = ({
 }: ProductDisplayProps) => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <p className="text-[30px] text-white ">{productName}</p>
+      {/* Smaller text for mobile, bigger for desktop */}
+      <p className="text-[20px] md:text-[30px] text-white">{productName}</p>
 
       {colors.length === 0 ? (
-        <p className="text-[15px] text-white">COMING SOON</p>
+        <p className="text-[12px] md:text-[15px] text-white">COMING SOON</p>
       ) : (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
           {colors.map((color, index) => (
             <React.Fragment key={index}>
-              <p className="text-[15px] text-white">
+              <p className="text-[12px] md:text-[15px] text-white">
                 {color.name}{" "}
                 <span
-                  className={`inline-block w-[10px] h-[10px] ${color.tailwindClass} rounded-full`}
+                  className={`inline-block w-[8px] h-[8px] md:w-[10px] md:h-[10px] ${color.tailwindClass} rounded-full`}
                 ></span>
               </p>
             </React.Fragment>
