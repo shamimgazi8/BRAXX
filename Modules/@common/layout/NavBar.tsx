@@ -24,33 +24,42 @@ export default function NavBar() {
     >
       <div
         className={cn(
-          "px-6 flex justify-between items-center transition-all duration-300 ease-in-out mx-5",
+          "px-6 flex justify-between items-center transition-all duration-300 ease-in-out mx-5 relative", // Added 'relative' here
           scrolled ? "py-[18px]" : "py-[28px]"
         )}
       >
-        <div></div>
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-white text-4xl tracking-wide font-extrabold"
-        >
-          BRAXX
-        </Link>
+        {/* Left-side spacer to push the logo */}
+        <div className="flex-grow md:flex-grow-0"></div>
 
-        {/* Desktop Links */}
-        <div className="space-x-6 hidden md:flex">
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/contact">Contact</NavLink>
+        {/* Logo - Centered */}
+        <div className="absolute left-1/2 -translate-x-1/2">
+          {" "}
+          {/* New wrapper div */}
+          <Link
+            href="/"
+            className="text-white text-4xl tracking-wide font-extrabold"
+          >
+            BRAXX
+          </Link>
         </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Desktop Links & Mobile Hamburger */}
+        <div className="flex items-center space-x-6">
+          {/* Desktop Links */}
+          <div className="space-x-6 hidden md:flex">
+            <NavLink href="/about">About</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
+          </div>
+
+          {/* Mobile Hamburger */}
+          <button
+            className="md:hidden text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown Menu */}

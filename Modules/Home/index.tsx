@@ -30,18 +30,18 @@ export default function HomePage() {
   return (
     <main className="relative">
       <section className="h-screen flex md:flex-row flex-col justify-center items-start mt-[10vh] relative">
-        <div className="w-[380px] absolute left-[8vw] md:flex hidden">
+        <div className="w-[380px] absolute left-[8vw] top-[35%] md:flex hidden">
           <HeroSpecs />
         </div>
 
         <div>
-          <Viewer360 images={frames} height={600} />
+          <Viewer360 images={frames} />
           <div className=" flex  justify-center gap-5">
             <ColorSelector />
             <ColorSelector />
           </div>
         </div>
-        <div className="w-full  justify-center items-center   flex md:hidden">
+        <div className="w-full  justify-center items-center   flex md:hidden mt-[100px]">
           <HeroSpecs />
         </div>
       </section>

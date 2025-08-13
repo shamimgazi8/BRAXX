@@ -11,7 +11,7 @@ interface Viewer360Props {
 export default function Viewer360({
   images,
   width = "100%",
-  height = "400px",
+  height = "70vh",
 }: Viewer360Props) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -124,6 +124,7 @@ export default function Viewer360({
 
   return (
     <div
+      className=" flex flex-col justify-center items-center  md:mt-10"
       ref={containerRef}
       style={{
         width,
@@ -140,6 +141,11 @@ export default function Viewer360({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
+      <div>
+        <h1 className="text-[70px] font-semibold text-white">
+          O3 <span className=" text-[50px]">PRO</span>
+        </h1>
+      </div>
       {isLoaded ? (
         <img
           src={images[currentFrame]}

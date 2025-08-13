@@ -50,11 +50,6 @@ const HeroSpecs = () => {
 
   return (
     <div className=" text-white bg-transparent">
-      {/* Title */}
-      <h1 className="text-[130px] font-semibold ">
-        O3 <span className=" text-[100px]">PRO</span>
-      </h1>
-
       {/* Sections */}
       <div className="border-l-8 border-white pl-2 space-y-2 font-semibold w-[350px]">
         {sections.map((section, idx) => (
