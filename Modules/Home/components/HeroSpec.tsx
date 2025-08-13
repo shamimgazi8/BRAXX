@@ -42,7 +42,7 @@ const HeroSpecs = () => {
     },
   ];
 
-  const [openSection, setOpenSection] = useState<string | null>(null);
+  const [openSection, setOpenSection] = useState<string | null>("Performance");
 
   const toggleSection = (title: string) => {
     setOpenSection((prev) => (prev === title ? null : title));
@@ -51,7 +51,7 @@ const HeroSpecs = () => {
   return (
     <div className=" text-white bg-transparent">
       {/* Sections */}
-      <div className="border-l-8 border-white pl-2 space-y-2 font-semibold w-[350px]">
+      <div className=" border-white pl-2 space-y-2 font-semibold w-[350px]">
         {sections.map((section, idx) => (
           <div key={idx} className=" pb-2 font-bold">
             {/* Section Header */}
@@ -72,7 +72,42 @@ const HeroSpecs = () => {
               <div className="mt-4  grid grid-cols-2  text-[16px] font-bold  ">
                 {section.items.map((item, i) => (
                   <React.Fragment key={i}>
-                    <div className=" border-b text-right pr-[70px] font-bold">
+                    <div className=" border-b text-start pr-[70px] font-bold">
+                      {item.label}
+                    </div>
+                    <div className="text-left border-b font-normal">
+                      {item.value}
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className=" border-white pl-2 space-y-2 font-semibold w-[350px]">
+        {sections.map((section, idx) => (
+          <div key={idx} className=" pb-2 font-bold">
+            {/* Section Header */}
+            <div
+              className="flex justify-between items-center cursor-pointer border-b-[2px]"
+              onClick={() => toggleSection(section.title)}
+            >
+              <h3 className="text-lg font-light">{section.title}</h3>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  openSection === section.title ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+
+            {/* Section Items */}
+            {openSection === section.title && section.items && (
+              <div className="mt-4  grid grid-cols-2  text-[16px] font-bold  ">
+                {section.items.map((item, i) => (
+                  <React.Fragment key={i}>
+                    <div className=" border-b text-start pr-[70px] font-bold">
                       {item.label}
                     </div>
                     <div className="text-left border-b font-normal">

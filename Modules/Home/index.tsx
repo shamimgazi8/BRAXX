@@ -30,7 +30,7 @@ export default function HomePage() {
   return (
     <main className="relative">
       <section className="h-screen flex md:flex-row flex-col justify-center items-start mt-[10vh] relative">
-        <div className="w-[380px] absolute left-[8vw] top-[35%] md:flex hidden">
+        <div className="w-[380px] absolute left-[8vw] top-[12%] md:flex hidden">
           <HeroSpecs />
         </div>
 

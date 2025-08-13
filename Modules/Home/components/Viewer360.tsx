@@ -1,5 +1,7 @@
 "use client";
 
+import { productData } from "@/Data/BikeHeroData";
+import { ProductDisplay } from "@/Modules/@common/ProductDisplay";
 import React, { useState, useEffect, useRef } from "react";
 
 interface Viewer360Props {
@@ -11,7 +13,7 @@ interface Viewer360Props {
 export default function Viewer360({
   images,
   width = "100%",
-  height = "70vh",
+  height = "80vh",
 }: Viewer360Props) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -124,7 +126,7 @@ export default function Viewer360({
 
   return (
     <div
-      className=" flex flex-col justify-center items-center  md:mt-10"
+      className=" flex flex-col justify-center items-center   md:mt-2"
       ref={containerRef}
       style={{
         width,
@@ -141,11 +143,20 @@ export default function Viewer360({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div>
-        <h1 className="text-[70px] font-semibold text-white">
-          O3 <span className=" text-[50px]">PRO</span>
-        </h1>
+      <div className="flex gap-12 items-center">
+        {productData.map((product: any, index: number) => (
+          <React.Fragment key={index}>
+            <ProductDisplay
+              productName={product.productName}
+              colors={product.colors}
+            />
+            {index < productData.length - 1 && (
+              <span className=" text-white">—</span>
+            )}
+          </React.Fragment>
+        ))}
       </div>
+
       {isLoaded ? (
         <img
           src={images[currentFrame]}

@@ -36,3 +36,24 @@ export const bikeHeroData = {
     },
   ],
 };
+
+export const productData = [
+  {
+    productName: "S8",
+    colors: [
+      { name: "RED", tailwindClass: "bg-red-500" },
+      { name: "BLACK", tailwindClass: "bg-black" },
+    ],
+  },
+  {
+    productName: "R15",
+    colors: [
+      { name: "SILVER", tailwindClass: "bg-gray-200" },
+      { name: "BLACK", tailwindClass: "bg-black" },
+    ],
+  },
+  {
+    productName: "C35",
+    colors: [],
+  },
+];
