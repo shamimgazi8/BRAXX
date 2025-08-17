@@ -8,6 +8,7 @@ import { useColorStore } from "@/store/useColorStore";
 import ColorSelector from "../@common/ColorSelector";
 import HeroSpecs from "./components/HeroSpec";
 import LogoMarquee from "../@common/InfinityLogoScroll";
+import Specs from "./components/Spec";
 
 // Dynamically import 360 viewer
 const Viewer360 = dynamic(() => import("@/Modules/Home/components/Viewer360"), {
@@ -30,16 +31,16 @@ export default function HomePage() {
   return (
     <main className="relative">
       <section className="h-screen flex md:flex-row flex-col justify-center items-start mt-[10vh] relative">
-        <div className="w-[380px] absolute left-[8vw] top-[12%] md:flex hidden">
-          <HeroSpecs />
+        <div className="w-[590px] absolute left-[5vw] top-[5%] md:flex hidden">
+          {/* <HeroSpecs /> */}
+          <Specs />
         </div>
-
         <div>
           <Viewer360 images={frames} />
-          <div className=" flex  justify-center gap-5">
+          {/* <div className=" flex  justify-center gap-5">
             <ColorSelector />
             <ColorSelector />
-          </div>
+          </div> */}
         </div>
         <div className="w-full  justify-center items-center   flex md:hidden mt-[100px]">
           <HeroSpecs />
