@@ -21,7 +21,7 @@ export default function HomePage() {
   const folderName = selectedColor.label.toLowerCase();
 
   const frames = Array.from(
-    { length: 96 },
+    { length: 35 },
     (_, i) =>
       `https://cdn.jsdelivr.net/gh/shamimgazi8/BRAXX/public/images/360frames/${folderName}-optimized/frame-${String(
         i + 1
