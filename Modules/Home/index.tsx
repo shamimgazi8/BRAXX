@@ -23,7 +23,7 @@ export default function HomePage() {
   const frames = Array.from(
     { length: 35 },
     (_, i) =>
-      `https://cdn.jsdelivr.net/gh/shamimgazi8/BRAXX/public/images/360framesV2/${folderName}-360-v2/frame-${String(
+      `https://cdn.jsdelivr.net/gh/shamimgazi8/BRAXX/public/images/360framesV2/${folderName}-360-V2/frame-${String(
         i + 1
       ).padStart(3, "0")}.webp?v=2`
   );
