@@ -159,6 +159,7 @@ export default function Viewer360({
 
       {isLoaded ? (
         <img
+          className=" scale-125"
           src={images[currentFrame]}
           alt={`360 frame ${currentFrame + 1}`}
           draggable={false}

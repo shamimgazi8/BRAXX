@@ -37,6 +37,7 @@ export default function HomePage() {
         </div>
         <div>
           <Viewer360 images={frames} />
+          <ColorSelector />
           {/* <div className=" flex  justify-center gap-5">
             <ColorSelector />
             <ColorSelector />
