@@ -17,14 +17,14 @@ export default function Viewer360({
 }: Viewer360Props) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(1.25);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const lastX = useRef<number | null>(null);
   const deltaAccum = useRef(0);
   const initialPinchDistance = useRef<number | null>(null);
   const frameCount = images.length;
-  const sensitivity = 5;
+  const sensitivity = 12; // higher number = slower rotation
 
   // Preload all images
   useEffect(() => {
@@ -159,7 +159,6 @@ export default function Viewer360({
 
       {isLoaded ? (
         <img
-          className=" scale-125"
           src={images[currentFrame]}
           alt={`360 frame ${currentFrame + 1}`}
           draggable={false}
