@@ -8,7 +8,7 @@ const colors = [
   { label: "Chrome", value: "#393939" },
   { label: "Black", value: "#000000" },
   { label: "Red", value: "#ff0000" },
-  { label: "ChromeBlack", value: "#1B2A34" },
+  { label: "Chrome_Black", value: "#1B2A34" },
 ];
 
 const ColorSelector = () => {
