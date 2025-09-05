@@ -2,10 +2,13 @@ const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
 
-const inputDir = path.join(__dirname, "public/images/360framesV2/CHROME 360");
+const inputDir = path.join(
+  __dirname,
+  "public/images/360framesV2/CHROME_BLACK 360"
+);
 const outputDir = path.join(
   __dirname,
-  "public/images/360framesV2/CHROME 360 V2"
+  "public/images/360framesV2/CHROME_BLACK 360 V2"
 );
 
 // Create output folder
